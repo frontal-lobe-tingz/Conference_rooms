@@ -1,0 +1,63 @@
+/* src/components/RoomCarousel.module.css */
+
+.container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 0; /* Adjust padding as needed */
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Override react-slick default styles if necessary */
+.container .slick-slider {
+  overflow: hidden;
+}
+
+.container .slick-slide {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .slick-list {
+  margin: 0 -10px; /* Adjust margins to give slides space */
+}
+
+.container .slick-track {
+  display: flex;
+}
+
+.container .slick-dots li button:before {
+  color: #61dafb;
+}
+
+.container .slick-dots li.slick-active button:before {
+  color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}

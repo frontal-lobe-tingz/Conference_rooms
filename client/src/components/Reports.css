@@ -1,0 +1,52 @@
+/* src/components/Reports.css */
+
+.reports__container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .reports__title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .reports__chart {
+    height: 400px; /* Ensure the chart has sufficient height */
+  }
+  
+  .reports__message {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+  }
+  
+  .reports__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .reports__table th,
+  .reports__table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .reports__table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .reports__table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .reports__table tr:hover {
+    background-color: #ddd;
+  }

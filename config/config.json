@@ -1,0 +1,23 @@
+{
+  "development": {
+   "username": "root",
+    "password": "@Admintrials00",
+    "database": "conference_booking",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+   "username": "root",
+    "password": "@Admintrials00",
+    "database": "conference_booking_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+   "username": "root",
+    "password": "@Admintrials00",
+    "database": "conference_booking_prod",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

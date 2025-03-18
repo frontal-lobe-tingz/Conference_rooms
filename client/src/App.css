@@ -1,0 +1,255 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+/* Reset some default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Main container for the filter and rooms */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Row containing the filters */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Filter inputs */
+.col-md-3 {
+  flex: 1 1 20%;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+.room-card {
+  background-color: #000000;
+  border-radius: 12px; /* Keep the rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  padding: 5px; /* Decrease padding for a more compact appearance */
+  width: 300px; /* Decrease width to make the card narrower */
+  height: 220px; /* Decrease height to make the card shorter */
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px; /* Adjusted height to fit within the smaller card */
+  object-fit: cover;
+  border-radius: 8px; /* Match border radius of card */
+}
+
+.room-card h2 {
+  font-size: 1.4em; /* Adjusted font size to fit the smaller card */
+  margin: 10px 0;
+  color: #333;
+}
+
+.room-card p {
+  margin: 8px 0;
+  color: #777;
+}
+
+
+.room-card .btn {
+  display: inline-block;
+  width: 80%;
+  margin: 10px 0; /* Adjusted margin for better spacing */
+  padding: 10px; /* Adjusted padding for a smaller button */
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  border-radius: 8px; /* Maintain rounded corners */
+  transition: background-color 0.3s;
+}
+
+.room-card .btn:hover {
+  background-color: #070808;
+}
+
+.room-card.selected {
+  border: 2px solid #61dafb; /* Thicker border for selection */
+  transform: scale(1.05); /* Slightly larger scale on selection */
+}
+/* Media query for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .room-card {
+    margin-bottom: 20px;
+  }
+
+  .row {
+    justify-content: center;
+  }
+
+  .col-md-3 {
+    flex: 1 1 40%;
+  }
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.carousel-controls button {
+  padding: 10px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.carousel-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+.custom-next-arrow {
+  right: 10px; /* Adjust as needed for placement */
+}
+
+.custom-prev-arrow {
+  left: 10px; /* Adjust as needed for placement */
+}
+
+.carousel-custom-arrows {
+  display: flex;
+  flex-direction: row; /* Horizontal alignment of arrows */
+  position: absolute;
+  top: 25%; /* Adjust as needed to place it correctly vertically */
+  left: 54%; /* Adjust as needed to place it correctly horizontally */
+  transform: translate(-50%, -50%); /* Center it both vertically and horizontally relative to its position */
+  gap: 10px; /* Space between the arrows */
+  z-index: 1002; /* Ensure it's above the carousel content */
+  
+  /* New Styles for Visibility */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  padding: 8px 12px; /* Padding around the arrows */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.custom-arrow {
+  background-color: #130101;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.custom-arrow:hover {
+  background-color: #333;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link .badge {
+  margin-left: 5px;
+}
+
+.btn-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+
+/* Conference Navbar */
+.conference-navbar {
+  padding: 1rem;
+  position: fixed; /* This makes the navbar fixed */
+  top: 0; /* Aligns it to the top of the viewport */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures it stays above other content */
+  background-color: #fff; /* Keep a background to make it visible over content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  width: 100%; /* Ensures the navbar stretches across the viewport */
+}
+
+.conference-navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.conference-navbar .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.conference-navbar .nav-link .badge {
+  margin-left: 5px;
+}
+
+.conference-navbar .btn-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .conference-navbar .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* Add some padding to the content below the navbar so it doesn't get hidden under the fixed navbar */
+body {
+  padding-top: 10px; /* Adjust this value depending on your navbar height */
+}
+
+/* Room details section */
+
+
+

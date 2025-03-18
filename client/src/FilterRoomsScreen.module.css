@@ -1,0 +1,342 @@
+/* src/components/FilterRoomsScreen.module.css */
+
+/* Reset some default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e6e1e1;
+}
+
+/* Main container for the filter and rooms */
+.filterRoomsContainer {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Overlay to darken the background */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+/* Filters Section */
+.filtersSection {
+  background-color: rgba(255, 255, 255, 0.5); /* Transparent black */
+  border-radius: 12px;
+  padding: 20px; /* Increased padding for better spacing */
+  margin: 20px auto; /* Increased margin for vertical spacing */
+  max-width: 1200px;
+  z-index: 2;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Section Title */
+.sectionTitle {
+  color: #faf4f4;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Row containing filters */
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* Added gap for spacing between filter columns */
+}
+
+/* Individual filter columns */
+.filterCol {
+  flex: 1 1 20%;
+  min-width: 200px; /* Ensure minimum width for smaller screens */
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+/* Input and Select Styles */
+.inputField, .selectField, .rangePicker {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+}
+
+.inputField::placeholder {
+  color: #666;
+}
+
+/* Reset Button */
+.resetButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resetButtonStyle {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.resetButtonStyle:hover {
+  background-color: #d9363e;
+}
+
+/* Rooms Carousel */
+.carouselSection {
+  max-width: 1200px;
+  margin: 50px auto 0 50px; /* Adjusts left margin to push the carousel to the right */
+  padding: 10px;
+  z-index: 2;
+  position: absolute;
+  left: 40%;
+  bottom: -0%;
+}
+
+
+
+/* Custom Arrows */
+.carouselCustomArrows {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Space below arrows */
+}
+
+.customArrow {
+  background-color: #0f1010;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.customArrow:hover {
+  background-color: #0d0d0e;
+}
+
+/* Room Card Styling */
+.roomCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: 10px;
+  width: 100%;
+  margin: 0 10px;
+}
+
+.roomCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.roomCardSelected {
+  border: 2px solid #61dafb;
+  box-shadow: 0 0 10px #61dafb;
+}
+
+.roomCardImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.roomCardTitle {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
+}
+
+.roomCardDescription {
+  margin: 8px 0;
+  color: #777;
+}
+
+.roomCardButton {
+  display: inline-block;
+  width: 80%;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.roomCardButton:hover {
+  background-color: #0056b3;
+}
+
+/* Room Details Overlay */
+.roomDetails {
+  position: relative; /* Ensure it stays fixed at the bottom of the viewport */
+  bottom: 20px;
+  left: 20px;
+  right: auto; /* Keep it left-aligned */
+  max-width: 350px;
+  padding: 25px 30px;
+  /* Semi-transparent background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  color: #fff; /* White text */
+  font-family: 'Roboto', sans-serif; /* Font style */
+  line-height: 1.6;
+  z-index: 1000; /* Make sure it's above other elements */
+  transition: opacity 0.3s ease; /* Only animate opacity */
+}
+
+.roomDetailsTitle {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: rgb(251, 248, 248);
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+
+.roomDetailsDescription {
+  font-size: 1.1rem;
+  color: #f0f0f0;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.roomDetailsCapacity {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.roomDetailsAmenities {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.roomDetailsButton {
+  width: 100%;
+  margin-top: 15px;
+  background-color: rgba(190, 72, 3, 0.964); /* Changed to a more visible color */
+  border: none;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.roomDetailsButton:hover {
+  background-color: brow;
+}
+
+/* Loader and Error Components */
+.loaderContainer, .errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.errorContainer .ant-alert {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .filtersSection {
+    padding: 15px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .roomDetails {
+    max-width: 90%;
+    left: 5%;
+    bottom: 10px;
+    padding: 15px 20px;
+  }
+
+  .customArrow {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+
+  .roomCardImage {
+    height: 150px;
+  }
+
+  .carouselSection {
+    padding: 10px;
+    margin-top: 30px;
+  }
+
+  .filtersRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filterCol {
+    flex: 1 1 100%;
+  }
+
+  .carouselCustomArrows {
+    flex-direction: column;
+  }
+
+  .customArrow {
+    margin: 5px 0;
+  }
+}
+
+/* Accessibility */
+.inputField:focus, .selectField:focus, .rangePicker:focus {
+  outline: none;
+  border-color: #61dafb;
+  box-shadow: 0 0 5px rgba(97, 218, 251, 0.5);
+}
+
+button, .ant-btn {
+  outline: none;
+}
+
+button:focus, .ant-btn:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth Transitions */
+.filtersSection, .carouselSection, .roomDetails {
+  transition: all 0.3s ease;
+}
