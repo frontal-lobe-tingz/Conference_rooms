@@ -1,18 +1,28 @@
+// config/database.js
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('conference_booking', 'Admin', '@Admintrials00', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3306,
-});
+// these four must be set in Render’s “Environment” settings
+const {
+  DB_NAME,
+  DB_USER,
+  DB_PASS,
+  DB_HOST,
+  DB_PORT,
+} = process.env;
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection to the database has been established successfully.');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+if (!DB_NAME || !DB_USER || !DB_PASS || !DB_HOST) {
+  throw new Error('Missing one of DB_NAME, DB_USER, DB_PASS or DB_HOST in env');
+}
+
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+  host: DB_HOST,
+  port: DB_PORT || 3306,
+  dialect: 'mysql',
+  logging: false,
+  dialectOptions: {
+    // uncomment if your MySQL requires SSL:
+    // ssl: { rejectUnauthorized: false }
+  },
+});
 
 module.exports = sequelize;

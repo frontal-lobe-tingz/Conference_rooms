@@ -1,9 +1,10 @@
 {
   "development": {
-   "username": "root",
+   "username": "Admin",
     "password": "@Admintrials00",
     "database": "conference_booking",
     "host": "127.0.0.1",
+    "port": 3307,
     "dialect": "mysql"
   },
   "test": {
