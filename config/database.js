@@ -3,11 +3,11 @@ const { Sequelize } = require('sequelize');
 
 // these four must be set in Render’s “Environment” settings
 const {
-  DB_NAME,
-  DB_USER,
-  DB_PASS,
-  DB_HOST,
-  DB_PORT,
+  MYSQL_DATABASE: DB_NAME,
+  MYSQLUSER: DB_USER,
+  MYSQL_ROOT_PASSWORD: DB_PASS,
+  MYSQLHOST: DB_HOST,
+  MYSQLPORT: DB_PORT,
 } = process.env;
 
 if (!DB_NAME || !DB_USER || !DB_PASS || !DB_HOST) {
