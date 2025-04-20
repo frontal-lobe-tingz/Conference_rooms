@@ -1,4 +1,7 @@
 // config/database.js
+
+require('dotenv').config();
+
 const { Sequelize } = require('sequelize');
 
 // these four must be set in Render’s “Environment” settings
