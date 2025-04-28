@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import '../Login.css'; // Import the CSS for styling
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -63,7 +64,7 @@ const Login = () => {
           </button>
           {error && <p className="error-message">{error}</p>}
         </form>
-        <p>Don't have an account? <a href="/register" className="register-link">Register here</a></p>
+        <p>Don't have an account? <Link to="/register" className="register-link">Register here</Link></p>
       </motion.div>
     </div>
   );
