@@ -39,11 +39,12 @@ sequelize.sync({ force: false }) // set force to true only if you want to recrea
 // CORS Configuration
 const corsOptions = {
   origin: [
-    'http://localhost:3000', // Local development
-    'conferencerooms-production.up.railway.app' // Production frontend URL
+    'http://localhost:3000',
+    'https://conference-room-booking.netlify.app' // Your Netlify URL
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 204
 };
 
