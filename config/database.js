@@ -1,19 +1,22 @@
-// config/database.js
-require('dotenv').config();                // 1) pull in your local .env when running locally
+require('dotenv').config();
+
 const { Sequelize } = require('sequelize');
 
-// 2) grab the full URL that Railway injects for you
-const connectionString = process.env.MYSQL_URL;
+// Use Railway's provided MySQL connection URL
+const connectionString = process.env.MYSQL_PUBLIC_URL;
+
 if (!connectionString) {
-  throw new Error('Missing env var: MYSQL_URL');
+  throw new Error('Missing MySQL connection string - check Railway environment variables');
 }
 
-// 3) let Sequelize parse user/pass/host/port/dbname from the URL
 const sequelize = new Sequelize(connectionString, {
   dialect: 'mysql',
   logging: false,
-  // if you ever need SSL:
-  // dialectOptions: { ssl: { rejectUnauthorized: true } },
+  dialectOptions: {
+    ssl: { // Railway databases require SSL
+      rejectUnauthorized: true
+    }
+  }
 });
 
 module.exports = sequelize;
