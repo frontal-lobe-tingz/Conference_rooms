@@ -17,7 +17,7 @@ function ConsumableItemDetails() {
 
   const fetchConsumableItem = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/consumable-items/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/consumable-items/${id}`);
       setItem(response.data);
       setLoading(false);
     } catch (error) {

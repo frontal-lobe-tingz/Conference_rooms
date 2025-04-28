@@ -20,7 +20,7 @@ const ClerkViewAll = () => {
   const fetchBookings = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/bookings/allbookings2');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/allbookings2`);
       if (response.data.success) {
         setBookings(response.data.bookings);
       } else {
@@ -43,7 +43,7 @@ const ClerkViewAll = () => {
     if (!window.confirm('Are you sure you want to cancel this booking?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${bookingId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}`);
       fetchBookings(); // Refresh the bookings after deletion
     } catch (error) {
       setError('Error canceling booking');
@@ -55,7 +55,7 @@ const ClerkViewAll = () => {
     if (!window.confirm('Are you sure you want to finalize this booking?')) return;
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/bookings/${bookingId}/finalize`);
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}/finalize`);
       if (response.data.success) {
         alert(response.data.message);
         fetchBookings(); // Refresh bookings
@@ -73,7 +73,7 @@ const ClerkViewAll = () => {
     if (!window.confirm('Are you sure you want to reset this booking?')) return;
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/bookings/${bookingId}/reset`);
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}/reset`);
       if (response.data.success) {
         alert(response.data.message);
         fetchBookings(); // Refresh bookings
@@ -89,7 +89,7 @@ const ClerkViewAll = () => {
   // Update booking
   const handleUpdate = async (bookingId, updatedData) => {
     try {
-      await axios.put(`http://localhost:5000/api/bookings/${bookingId}`, updatedData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}`, updatedData);
       fetchBookings(); // Refresh the bookings after update
       setEditingBookingId(null); // Reset the editing mode
     } catch (error) {

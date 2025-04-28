@@ -97,7 +97,8 @@ function FilterRoomsScreen() {
 
       console.log('Sending filter data:', filterData);
 
-      const response = await axios.post('/api/rooms/filterRooms', filterData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/rooms/filterRooms`
+        , filterData);
 
       console.log('Received response:', response.data);
 

@@ -59,7 +59,7 @@ function CartScreen() {
         return;
       }
   
-      await axios.post(`http://localhost:5000/api/cart/confirm/${currentUser.id}`);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/cart/confirm/${currentUser.id}`);
   
       alert('Booking confirmed!');
       setCart([]); 

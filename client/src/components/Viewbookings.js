@@ -15,7 +15,7 @@ const Viewbookings = () => {
         // Optional: Show a console log when fetching starts
         console.log('Fetching bookings from backend...');
         
-        const response = await axios.get('http://localhost:5000/api/bookings/allbookings2');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/allbookings2`);
 
         // Log the entire response for debugging
         console.log('Response received:', response);
@@ -53,7 +53,7 @@ const Viewbookings = () => {
 
   const makeRoomUnavailable = async (roomId) => {
     try {
-      await axios.put(`http://localhost:5000/api/rooms/${roomId}/unavailable`);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/rooms/${roomId}/unavailable`);
       alert('Room marked as unavailable');
       
       // Optionally, refetch bookings to reflect the change

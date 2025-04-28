@@ -18,7 +18,7 @@ function BookingScreen() {
       };
 
       // Send booking data to the server
-      await axios.post('/api/bookings', bookingData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/bookings`, bookingData);
 
       alert('Room successfully booked!');
       navigate('/'); // Redirect to home or another screen

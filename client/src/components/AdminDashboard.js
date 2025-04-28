@@ -41,7 +41,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchRoomAvailability = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/rooms/availability', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms/availability`, {
           params: {
             fromDate,
             toDate,
@@ -59,7 +59,7 @@ function AdminDashboard() {
 
     const fetchRoomUsageStatistics = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/rooms/usageStatistics');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms/usageStatistics`);
         console.log('Fetched room usage statistics:', response.data); // Debugging
         setRoomUsageStatistics(response.data.rooms);
       } catch (err) {
@@ -72,7 +72,7 @@ function AdminDashboard() {
 
     const fetchUserBookingCounts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/bookings/userBookingCounts');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/userBookingCounts`);
         const bookingData = response.data.users.map(user => ({
           user: user.user,
           bookings: user.bookingCount,
@@ -88,7 +88,7 @@ function AdminDashboard() {
 
     const fetchPopularTimes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/bookings/popularTimes');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/popularTimes`);
         setPopularTimesData(response.data.data);
       } catch (err) {
         console.error('Error fetching popular times:', err);
@@ -100,7 +100,7 @@ function AdminDashboard() {
 
     const fetchRooms = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/rooms/popularRooms');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms/popularRooms`);
         setReportData(
           response.data.map(room => ({
             id: room.name,

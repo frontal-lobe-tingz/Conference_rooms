@@ -33,7 +33,7 @@ function ConsumableItemsList() {
   const fetchConsumableItems = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/consumable-items/getall`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/consumable-items/getall`, {
         headers: {
           // Include user ID or token if needed for backend authentication
           'x-user-id': currentUser.id,
@@ -56,7 +56,7 @@ function ConsumableItemsList() {
     }
     try {
       await axios.put(
-        `http://localhost:5000/api/consumable-items/updatestock/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/consumable-items/updatestock/${id}`,
         { quantity },
         {
           headers: {
@@ -79,7 +79,7 @@ function ConsumableItemsList() {
     }
     try {
       await axios.put(
-        `http://localhost:5000/api/consumable-items/updatestock/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/consumable-items/updatestock/${id}`,
         { quantity: -quantity },
         {
           headers: {
@@ -97,7 +97,7 @@ function ConsumableItemsList() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/consumable-items/delete/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/consumable-items/delete/${id}`, {
           headers: {
             'x-user-id': currentUser.id,
           },

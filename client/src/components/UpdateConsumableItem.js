@@ -31,7 +31,7 @@ function UpdateConsumableItem() {
 
   const fetchConsumableItem = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/consumable-items/${id}`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/consumable-items/${id}`, {
         headers: {
           'x-user-id': currentUser.id,
         },
@@ -56,7 +56,7 @@ function UpdateConsumableItem() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/consumable-items/update/${id}`, item, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/consumable-items/update/${id}`, item, {
         headers: {
           'x-user-id': currentUser.id,
         },

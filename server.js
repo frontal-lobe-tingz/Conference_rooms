@@ -35,6 +35,20 @@ sequelize.sync({ force: false }) // set force to true only if you want to recrea
   // Serve the uploaded images statically
   app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+
+// CORS Configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // Local development
+    'conferencerooms-production.up.railway.app' // Production frontend URL
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+
 // Middleware
 app.use(cors());
 app.use(express.json()); // to parse JSON requests

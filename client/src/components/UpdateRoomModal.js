@@ -32,7 +32,7 @@ function UpdateRoomModal({ room, onClose, onUpdate }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/rooms/updateroom/${room.id}`,
+        `${process.env.REACT_APP_API_URL}/api/rooms/updateroom/${room.id}`,
         formData
       );
       Swal.fire('Success', response.data.message, 'success');

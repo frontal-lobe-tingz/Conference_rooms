@@ -27,7 +27,7 @@ const ViewAllBookings = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/api/bookings/allbookings?userId=${userId}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/allbookings?userId=${userId}`)
       .then(response => {
         console.log('Response data:', response.data); // Debugging line
         if (response.data.success) {
@@ -54,7 +54,7 @@ const ViewAllBookings = () => {
 
   const handleCancel = async (bookingId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${bookingId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}`);
       fetchBookings();
     } catch (error) {
       setError('Error canceling booking');
@@ -63,7 +63,7 @@ const ViewAllBookings = () => {
 
   const handleUpdate = async (bookingId, updatedData) => {
     try {
-      await axios.put(`http://localhost:5000/api/bookings/${bookingId}`, updatedData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/bookings/${bookingId}`, updatedData);
       fetchBookings();
       setEditingBookingId(null);
     } catch (error) {

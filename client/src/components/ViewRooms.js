@@ -15,7 +15,7 @@ export function ViewRooms() {
   useEffect(() => {
     async function fetchRooms() {
       try {
-        const response = await axios.get('http://localhost:5000/api/rooms/getallrooms');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms/getallrooms`);
         setRooms(response.data);
         setLoading(false);
       } catch (error) {
@@ -29,7 +29,7 @@ export function ViewRooms() {
   // Delete room
   const deleteRoom = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/rooms/deleteroom/${id}`);
+      const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/rooms/deleteroom/${id}`);
       Swal.fire('Success', response.data.message, 'success');
       setRooms(rooms.filter(room => room.id !== id)); // Remove the deleted room from state
     } catch (error) {
@@ -48,7 +48,7 @@ export function ViewRooms() {
   // Refresh rooms after an update
   const refreshRooms = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/rooms/getallrooms');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms/getallrooms`);
       setRooms(response.data);
     } catch (error) {
       console.error('Failed to fetch rooms', error);

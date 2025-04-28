@@ -24,7 +24,9 @@ function RoomDetails() {
     const fetchRoomDetails = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/rooms/${roomId}`);
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/rooms/${roomId}`
+        );
         setRoom(data);
         setLoading(false);
       } catch (err) {
@@ -69,7 +71,7 @@ function RoomDetails() {
     };
     
     try {
-      await axios.post('/api/bookings/bookroom', bookingDetails);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/bookings/bookroom`, bookingDetails);
       alert('Booking successful');
       navigate('/view-all-bookings');
     } catch (err) {
@@ -95,7 +97,12 @@ function RoomDetails() {
     };
   
     try {
-      const response = await axios.post('http://localhost:5000/api/cart/add', bookingDetails); // Updated endpoint to match the backend
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/cart/add`,
+        bookingDetails
+      ); // Updated endpoint to match the backend
+
+
       if (response.data.success) {
         alert('Room added to cart');
       } else {

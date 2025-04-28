@@ -7,7 +7,7 @@ function RoomCard({ room }) {
   return (
     <div className={styles.container}>
       <img 
-        src={room.imageurl || 'http://localhost:5000/uploads/default-image.jpg'} 
+        src={room.imageurl || `${process.env.REACT_APP_API_URL}/uploads/default-image.jpg`} 
         alt={room.name} 
         className={styles.image}
       />

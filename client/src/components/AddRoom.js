@@ -41,7 +41,7 @@ function AddRoom() {
     
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/api/rooms/addroom', formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/rooms/addroom`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

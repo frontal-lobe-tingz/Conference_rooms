@@ -14,7 +14,7 @@ const Profile = () => {
       const storedUser = JSON.parse(localStorage.getItem('user'));
       if (storedUser) {
         try {
-          const response = await axios.get(`http://localhost:5000/api/users/${storedUser._id}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${storedUser._id}`);
           setUser(response.data);
           setName(response.data.name);
           setDepartment(response.data.department);
@@ -31,7 +31,7 @@ const Profile = () => {
   const updateProfile = async () => {
     const updatedUser = { name, department, contactInfo };
     try {
-      await axios.put(`http://localhost:5000/api/users/${user._id}`, updatedUser);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${user._id}`, updatedUser);
       alert('Profile updated successfully');
     } catch (error) {
       alert('Error updating profile');

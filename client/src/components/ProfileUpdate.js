@@ -17,7 +17,7 @@ const ProfileUpdate = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(`/api/users/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
         setProfile(response.data);
       } catch (error) {
         console.error('Error fetching user profile:', error);
@@ -39,7 +39,7 @@ const ProfileUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/users/${userId}`, profile);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, profile);
       alert('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);

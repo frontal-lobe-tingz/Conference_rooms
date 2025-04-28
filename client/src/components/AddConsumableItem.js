@@ -36,7 +36,7 @@ function AddConsumableItem() {
     e.preventDefault();
     try {
       await axios.post(
-        `http://localhost:5000/api/consumable-items/add`,
+        `${process.env.REACT_APP_API_URL}/api/consumable-items/add`,
         item,
         {
           headers: {
