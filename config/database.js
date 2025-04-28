@@ -13,7 +13,9 @@ const sequelize = new Sequelize(connectionString, {
   dialect: 'mysql',
   logging: false,
   dialectOptions: {
-    ssl: { // Railway databases require SSL
+    ssl: { 
+      require: true,
+
       rejectUnauthorized: true
     }
   }
