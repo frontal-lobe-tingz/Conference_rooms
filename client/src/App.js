@@ -50,7 +50,7 @@ function App() {
           <Route path="/consumable-items/:id" element={<ConsumableItemDetails />} />
           
           {/* Admin Dashboard Route */}
-          <Route path="/admin-dashboard*" element={<AdminDashboard />} />
+          <Route path="/admin-dashboard/*" element={<AdminDashboard />} />
 
         </Routes>
       </BrowserRouter>
