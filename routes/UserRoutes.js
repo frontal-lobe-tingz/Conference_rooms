@@ -4,11 +4,13 @@ const { Booking, User, Room, sequelize } = require('../models');
 
 // Register route
 router.post('/register', async (req, res) => {
-    const { email, password, name, department, contactInfo } = req.body;
+  console.log('🔍 Register payload:', req.body); 
+  const { email, password, name, department, contactInfo } = req.body;
   
     try {
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
+        console.warn('⚠️ Registration blocked—email already exists:', email);
         return res.status(400).json({ message: 'User already exists' });
       }
   
