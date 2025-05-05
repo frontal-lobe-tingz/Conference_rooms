@@ -120,10 +120,16 @@ router.post('/addroom', upload.single('image'), async (req, res) => {
     const amenitiesArray = JSON.parse(amenities);
 
     // Create full URL for the image
-    const imageUrl = req.file
-      ? `${process.env.SERVER_BASE_URL}/uploads/${req.file.filename}`
-      : null;
+    //const imageUrl = req.file
+   //  ? `${process.env.SERVER_BASE_URL}/uploads/${req.file.filename}`
+    // : null;
 
+    // derive protocol+host dynamically
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const imageUrl = req.file
+    ? `${baseUrl}/uploads/${req.file.filename}`
+    : null;
+    
     const newRoom = await Room.create({
       name,
       description,
